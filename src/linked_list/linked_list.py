@@ -46,23 +46,33 @@ class LinkedList:
     def delete(self, val, all=False):
         """Remove one or all nodes with passed value"""
         prev_node = None
-        node = self.head
-        is_removed = False
-        while node is not None:
-            if node.value == val and not is_removed:
+        curr = self.head
+        is_completed = False
+        while curr is not None:
+            if curr.value == val and not is_completed:
                 if prev_node is None:
-                    self.head = node.next
+                    next_node = curr.next
+                    self.head = next_node
+                    curr.next = None
+                    curr = self.head
                 else:
-                    prev_node.next = node.next
-                    node = prev_node
-                if not all:
-                    is_removed = True
-            prev_node = node
-            node = node.next
-        self.tail = node
+                    prev_node.next = curr.next
+                    curr.next = None
+                    curr = prev_node
+                is_completed = not all and True
+            else:
+                prev_node = curr
+                curr = curr.next
+        self.tail = prev_node
 
     def clean(self):
         """Clean up current linked list"""
+        node = self.head
+        while node is not None:
+            next_node = node.next
+            node.next = None
+            node = next_node
+
         self.head = None
         self.tail = None
 
@@ -86,3 +96,6 @@ class LinkedList:
         else:
             newNode.next = afterNode.next
             afterNode.next = newNode
+
+        if newNode.next == self.tail or afterNode == self.tail:
+            self.tail = newNode
