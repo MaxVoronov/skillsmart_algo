@@ -94,18 +94,6 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(node, next_node.prev)
         self.assertEqual(next_node, node.next)
 
-    def test_insert_in_head(self):
-        node = Node(99)
-        nodes = self.populate_list(self.list)
-        self.list.insert(None, node)
-
-        self.assertIsNone(node.prev)
-        self.assertEqual(node, self.list.head)
-        self.assertEqual(nodes[0], node.next)
-        self.assertNotEqual(node, self.list.tail)
-        self.assertEqual(nodes[len(nodes) - 1], self.list.tail)
-        self.assertEqual(len(nodes) + 1, self.list.len())
-
     def test_insert_multiple(self):
         prev_node = None
         nodes = (Node(12), Node(34), Node(56),)
@@ -122,7 +110,7 @@ class TestLinkedList(unittest.TestCase):
     def test_insert_in_tail(self):
         node = Node(99)
         nodes = self.populate_list(self.list)
-        self.list.insert(self.list.tail, node)
+        self.list.insert(None, node)
 
         self.assertNotEqual(node, self.list.head)
         self.assertEqual(nodes[0], self.list.head)
@@ -152,6 +140,28 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(nodes[0], node.next)
         self.assertEqual(nodes[len(nodes) - 1], self.list.tail)
         self.assertEqual(len(nodes) + 1, self.list.len())
+
+    def test_add_in_head_empty_list(self):
+        node = Node(99)
+        self.list.add_in_head(node)
+
+        self.assertIsNone(node.prev)
+        self.assertIsNone(node.next)
+        self.assertEqual(node, self.list.head)
+        self.assertEqual(node, self.list.tail)
+        self.assertEqual(1, self.list.len())
+
+    def test_add_multiple_in_head_empty_list(self):
+        node = Node(99)
+        node_alt = Node(77)
+        self.list.add_in_head(node_alt)
+        self.list.add_in_head(node)
+
+        self.assertIsNone(node.prev)
+        self.assertEqual(node_alt, node.next)
+        self.assertEqual(node, self.list.head)
+        self.assertEqual(node_alt, self.list.tail)
+        self.assertEqual(2, self.list.len())
 
     def test_delete_in_head(self):
         node = Node(99)

@@ -96,24 +96,34 @@ class LinkedList2:
     def insert(self, afterNode, newNode):
         """
         Insert node into linked list after another node
-        If *afterNode* is None, then new node will added into head
+        If *afterNode* is None, then new node will added into tail
         """
-        if afterNode is None:
-            newNode.prev = None
-            newNode.next = self.head
-            self.head = newNode
+        if afterNode is None or afterNode.next is None:
+            self.add_in_tail(newNode)
         else:
-            newNode.prev = afterNode
+            afterNode.next.prev = newNode
             newNode.next = afterNode.next
-            if afterNode.next is not None:
-                afterNode.next.prev = newNode
             afterNode.next = newNode
-
-        if newNode.next == self.tail or afterNode == self.tail:
-            self.tail = newNode
+            newNode.prev = afterNode
 
     def add_in_head(self, newNode):
         """
         Insert node into list head
         """
-        self.insert(None, newNode)
+        if self.head is not None:
+            newNode.next = self.head
+            self.head.prev = newNode
+        if self.tail is None:
+            self.tail = newNode
+        self.head = newNode
+
+    def print(self):
+        """
+        Print linked list (for debug)
+        """
+        print("\n[H]", end=' <-> ')
+        node = self.head
+        while node is not None:
+            print('[' + str(node.value) + ']', end=' <-> ')
+            node = node.next
+        print("[T]")
