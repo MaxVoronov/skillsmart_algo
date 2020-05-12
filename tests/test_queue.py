@@ -14,6 +14,16 @@ class TestQueue(unittest.TestCase):
             self.assertEqual(value, queue.dequeue())
         self.assertEqual(0, queue.size())
 
+    def test_enqueue_dequeue_big(self):
+        queue = Queue()
+        for i in range(10000):
+            queue.enqueue(i + 1)
+
+        for i in range(10000):
+            queue.enqueue(queue.dequeue())
+
+        self.assertEqual(10000, queue.size())
+
     def test_dequeue_empty(self):
         queue = Queue()
         self.assertIsNone(queue.dequeue())
