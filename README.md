@@ -6,6 +6,7 @@
 * [Lesson 3. Dynamic arrays](src/dynamic_array/dynamic_array.py)
 * [Lesson 4. Stack](src/stack/stack.py)
 * [Lesson 5. Queue](src/queue/queue.py)
+* [Lesson 6. Deque](src/deque/deque.py)
 
 ## Tests
 Use unittest for running all tests write down (or use Make):
