@@ -7,6 +7,7 @@
 * [Lesson 4. Stack](src/stack/stack.py)
 * [Lesson 5. Queue](src/queue/queue.py)
 * [Lesson 6. Deque](src/deque/deque.py)
+* [Lesson 7. Ordered lists](src/ordered_list/ordered_list.py)
 
 ## Tests
 Use unittest for running all tests write down (or use Make):
