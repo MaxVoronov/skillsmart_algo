@@ -9,7 +9,8 @@
 * [Lesson 6. Deque](src/deque/deque.py)
 * [Lesson 7. Ordered lists](src/ordered_list/ordered_list.py)
 * [Lesson 8. Hash tables](src/hashtable/hashtable.py)
-* [Lesson 8. Native dictionary](src/dictionary/dictionary.py)
+* [Lesson 9. Native dictionary](src/dictionary/dictionary.py)
+* [Lesson 10. Bloom filter](src/bloom_filter/bloom_filter.py)
 
 ## Tests
 Use unittest for running all tests write down (or use Make):
