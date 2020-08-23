@@ -36,8 +36,8 @@ class TestPowerSet(unittest.TestCase):
         union = self.storage.union(self.storage2)
         self.assertEqual(2, self.storage.size())
         self.assertEqual(0, self.storage2.size())
-        self.assertEqual(2, len(union))
-        self.assertEqual([123, 234], union)
+        self.assertEqual(2, union.size())
+        self.assertEqual([123, 234], union.storage)
 
         # Union with non empty set
         self.storage2.put(234)
@@ -45,8 +45,8 @@ class TestPowerSet(unittest.TestCase):
         union = self.storage.union(self.storage2)
         self.assertEqual(2, self.storage.size())
         self.assertEqual(2, self.storage2.size())
-        self.assertEqual(3, len(union))
-        self.assertEqual([123, 234, 456], union)
+        self.assertEqual(3, union.size())
+        self.assertEqual([123, 234, 456], union.storage)
 
     def test_intersection(self):
         self.storage.put(123)
@@ -57,15 +57,15 @@ class TestPowerSet(unittest.TestCase):
         intersection = self.storage.intersection(self.storage2)
         self.assertEqual(3, self.storage.size())
         self.assertEqual(1, self.storage2.size())
-        self.assertEqual(0, len(intersection))
-        self.assertEqual([], intersection)
+        self.assertEqual(0, intersection.size())
+        self.assertEqual([], intersection.storage)
 
         self.storage2.put(234)
         self.storage2.put(345)
         intersection = self.storage.intersection(self.storage2)
         self.assertEqual(3, self.storage2.size())
-        self.assertEqual(2, len(intersection))
-        self.assertEqual([234, 345], intersection)
+        self.assertEqual(2, intersection.size())
+        self.assertEqual([234, 345], intersection.storage)
 
     def test_difference(self):
         self.storage.put(123)
@@ -76,8 +76,8 @@ class TestPowerSet(unittest.TestCase):
         difference = self.storage.difference(self.storage2)
         self.assertEqual(2, self.storage.size())
         self.assertEqual(2, self.storage2.size())
-        self.assertEqual(2, len(difference))
-        self.assertEqual([123, 456], difference)
+        self.assertEqual(2, difference.size())
+        self.assertEqual([123, 456], difference.storage)
 
     def test_issubset_case1(self):
         self.storage.put(123)

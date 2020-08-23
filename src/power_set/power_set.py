@@ -19,27 +19,28 @@ class PowerSet:
         return len(self.storage)
 
     def union(self, set2):
-        result = self.storage.copy()
+        result = PowerSet()
+        result.storage = self.storage.copy()
         for value in set2.storage:
-            if value not in result:
-                result.append(value)
+            if not result.get(value):
+                result.put(value)
         return result
 
     def intersection(self, set2):
-        result = []
+        result = PowerSet()
         for value in set2.storage:
             if value in self.storage:
-                result.append(value)
+                result.put(value)
         return result
 
     def difference(self, set2):
-        result = []
+        result = PowerSet()
         for value in self.storage:
-            if value not in set2.storage and value not in result:
-                result.append(value)
+            if value not in set2.storage and not result.get(value):
+                result.put(value)
         for value in set2.storage:
-            if value not in self.storage and value not in result:
-                result.append(value)
+            if value not in self.storage and not result.get(value):
+                result.put(value)
         return result
 
     def issubset(self, set2):
