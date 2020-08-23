@@ -28,6 +28,4 @@ class BloomFilter:
         idx_hash_1 = self.hash1(str1)
         idx_hash_2 = self.hash2(str1)
 
-        print(str1, idx_hash_1, self.data[idx_hash_1], idx_hash_2, self.data[idx_hash_2])
-
         return self.data[idx_hash_1] == 1 and self.data[idx_hash_2] == 1

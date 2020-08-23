@@ -11,6 +11,7 @@
 * [Lesson 8. Hash tables](src/hashtable/hashtable.py)
 * [Lesson 9. Native dictionary](src/dictionary/dictionary.py)
 * [Lesson 10. Bloom filter](src/bloom_filter/bloom_filter.py)
+* [Lesson 11. Power set](src/power_set/power_set.py)
 
 ## Tests
 Use unittest for running all tests write down (or use Make):

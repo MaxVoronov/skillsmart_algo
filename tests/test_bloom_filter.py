@@ -29,7 +29,6 @@ class TestBloomFilter(unittest.TestCase):
             value = base[i:] + base[:i]
             cases.append(value)
             self.bloom.add(value)
-        print(cases)
 
         # Test successful cases
         for case in cases:
