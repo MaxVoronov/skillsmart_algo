@@ -70,14 +70,18 @@ class TestPowerSet(unittest.TestCase):
     def test_difference(self):
         self.storage.put(123)
         self.storage.put(234)
+        self.storage.put(567)
+        self.storage.put(789)
         self.storage2.put(234)
         self.storage2.put(456)
+        self.storage2.put(567)
+        self.storage2.put(678)
 
         difference = self.storage.difference(self.storage2)
-        self.assertEqual(2, self.storage.size())
-        self.assertEqual(2, self.storage2.size())
+        self.assertEqual(4, self.storage.size())
+        self.assertEqual(4, self.storage2.size())
         self.assertEqual(2, difference.size())
-        self.assertEqual([123, 456], difference.storage)
+        self.assertEqual([123, 789], difference.storage)
 
     def test_issubset_case1(self):
         self.storage.put(123)

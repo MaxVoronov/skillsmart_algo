@@ -38,9 +38,6 @@ class PowerSet:
         for value in self.storage:
             if value not in set2.storage and not result.get(value):
                 result.put(value)
-        for value in set2.storage:
-            if value not in self.storage and not result.get(value):
-                result.put(value)
         return result
 
     def issubset(self, set2):
